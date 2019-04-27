@@ -1,7 +1,4 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const auth = require('../../config/auth')
 
 const AdSchema = new mongoose.Schema({
   title: {
