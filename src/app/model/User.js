@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const auth = require('../../config/auth')
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -30,6 +32,13 @@ UserSchema.pre('save', async function (next) {
 UserSchema.methods = {
   compareHash (password) {
     return bcrypt.compare(password, this.password)
+  }
+}
+UserSchema.statics = {
+  generateToken ({ id }) {
+    return jwt.sign({ id }, auth.secret, {
+      expiresIn: auth.ttl
+    })
   }
 }
 module.exports = mongoose.model('User', UserSchema)

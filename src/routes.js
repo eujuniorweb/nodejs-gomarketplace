@@ -4,9 +4,10 @@ const routes = express.Router()
 
 const UserController = require('./app/controller/UserController')
 const SessionController = require('./app/controller/SessionController')
+const authMiddleare = require('./app/middlewares/auth')
 
-routes.get('/', (req, res) => {
-  return res.json('Hello World')
+routes.get('/', authMiddleare, (req, res) => {
+  return res.json({ ok: true })
 })
 routes.post('/users', UserController.store)
 routes.post('/sessions', SessionController.store)
