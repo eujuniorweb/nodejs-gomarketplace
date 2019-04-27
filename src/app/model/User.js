@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase
+    lowercase: true
   },
   password: {
     type: String,
@@ -20,4 +20,5 @@ const UserSchema = new mongoose.Schema({
     default: Date.now
   }
 })
+
 module.exports = mongoose.model('User', UserSchema)
