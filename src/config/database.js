@@ -1,3 +1,3 @@
 module.exports = {
-  uri: 'mongodb://localhost:27017/gomarketplace'
+  uri: 'mongodb://mongo:mongo@172.16.0.2:27017/gomarketplace'
 }
